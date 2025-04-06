@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kintsugi Mind - Healing Beautiful Minds</title>
+    <style>
+        :root {
+            --primary: #836794;
+            --secondary: #f2e9e4;
+            --accent: #c9ada7;
+            --dark: #22223b;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(45deg, rgba(131, 103, 148, 0.9) 0%, rgba(201, 173, 167, 0.7) 100%);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            background-color: var(--secondary);
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background-color: #705980;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .features {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 1rem auto 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+            padding-top: 2rem;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .testimonial {
+            background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .eligible-users {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .eligible-list {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .eligible-list ul {
+            list-style-type: none;
+        }
+        
+        .eligible-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .eligible-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .eligible-list li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .how-it-works {
+            padding: 5rem 0;
+        }
+        
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-top: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--accent);
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .kintsugi-symbol {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .feature-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-overlay"></div>
+        <div class="header-content container">
+            <h1 class="logo">Kintsugi Mind</h1>
+            <p class="tagline">Healing Beautiful Minds, Embracing Every Crack</p>
+            <a href="#download" class="cta-button">Download Now</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Your Mental Health Matters</h2>
+            <p>Inspired by the Japanese art of repairing broken pottery with gold, Kintsugi Mind helps you embrace your challenges and transform them into strength and beauty.</p>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Free Therapy Sessions</h3>
+                        <p>Access professional therapy sessions at no cost for high school students (grades 9-12) and college students. Our licensed therapists are available when you need them most.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Mood Tracker</h3>
+                        <p>Track your mood patterns with our intuitive, visual mood tracker. Identify triggers and recognize improvements over time with personalized insights.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📔</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Guided Journaling</h3>
+                        <p>Express your thoughts with guided journaling prompts designed by mental health professionals. Document your journey and witness your growth.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Meditation Library</h3>
+                        <p>Access a diverse collection of guided meditations, breathing exercises, and mindfulness practices tailored to student-specific challenges.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Wellness Reminders</h3>
+                        <p>Receive gentle reminders for self-care activities, stress management techniques, and mindful breaks during high-pressure academic periods.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Peer Support Community</h3>
+                        <p>Connect with other students in moderated support groups, sharing experiences and strategies in a safe, anonymous environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"Kintsugi Mind completely changed how I approach my mental health. The free therapy sessions helped me manage my anxiety during finals, and the daily journal prompts keep me grounded."</p>
+                <p class="testimonial-author">- Maya, College Sophomore</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="eligible-users">
+        <div class="container">
+            <h2 class="section-title">Who Can Access Free Services?</h2>
+            <div class="eligible-list">
+                <ul>
+                    <li>High school students in grades 9-12</li>
+                    <li>Undergraduate college and university students</li>
+                    <li>Graduate and post-graduate students</li>
+                    <li>Technical and vocational education students</li>
+                    <li>International students studying abroad</li>
+                    <li>Online and distance learning students</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download & Register</h3>
+                        <p>Download the app and create your account using your student email. Verify your student status to unlock free features.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Complete Your Profile</h3>
+                        <p>Tell us about yourself so we can customize your experience and match you with the right resources.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Schedule Therapy</h3>
+                        <p>Browse available therapists and schedule your free sessions at times that work with your class schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Explore Tools</h3>
+                        <p>Start using the mood tracker, journal, and meditation library to build your daily mental wellness routine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="hero" id="download">
+        <div class="container">
+            <h2>Begin Your Healing Journey Today</h2>
+            <p>Download Kintsugi Mind and take the first step toward mental wellness.</p>
+            <div style="margin-top: 2rem;">
+                <a href="#" class="cta-button">Download for iOS</a>
+                <a href="#" class="cta-button" style="margin-left: 1rem; background-color: var(--accent);">Download for Android</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3><span class="kintsugi-symbol">⊹</span> Kintsugi Mind</h3>
+            <p>Mental wellness for every student, everywhere.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
